@@ -146,11 +146,11 @@ public static class HatManager_Initialize
     }
 }
 
-[HarmonyPatch(typeof(StatsManager), nameof(StatsManager.BanMinutesLeft), MethodType.Getter)]
-public static class StatsManager_BanMinutesLeft_Getter
+[HarmonyPatch(typeof(DataManager), nameof(DataManager.BanMinutesLeft), MethodType.Getter)]
+public static class DataManager_BanMinutesLeft_Getter
 {
     // Prefix patch of Getter method for StatsManager.BanMinutesLeft to remove disconnect penalty
-    public static void Postfix(StatsManager __instance, ref int __result)
+    public static void Postfix(DataManager __instance, ref int __result)
     {
         if (CheatToggles.avoidBans){
             __instance.BanPoints = 0f; // Removes all BanPoints
